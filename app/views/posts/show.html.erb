@@ -10,4 +10,14 @@
 <h3><%= @post.content %></h3>
 </div>
 
+<div class="new_comment_form">
+  <%= render 'comments/new' %>
+</div>
+
+<ul>
+<% @post.comments.each do |comment| %>
+  <li><%= comment.content %> </li>
+<% end %>
+</ul>
+
 <%= link_to "Back", posts_path %>
