@@ -7,5 +7,9 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :url, presence: true, unless: "!content.nil?"
   validates :content, presence: true, unless: "!url.nil?"
-  validates :url, format: { with: /^#{URI::regexp}$/, message: "Must be valid URL" }
+  validates :url, allow_blank: true, format: { with: /^#{URI::regexp}$/, message: "Must be valid URL" }
+
+  def is_external_content?
+    url.present?
+  end
 end

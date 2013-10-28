@@ -2,6 +2,7 @@
 
 <% if current_user %>
   <h1>Welcome, <%= current_user.username %></h1>
+  <%= link_to 'New Post', new_post_path %><br><br>
   <%= link_to 'Log Out', '/logout' %>
 <% else %>
   <%= form_tag (login_path)  do %>
@@ -19,3 +20,15 @@
     <% end %>
   <%= link_to "Sign Up", new_user_path %>
 <% end %>
+
+<ul>
+<% @posts.each do |post| %>
+  <li>
+  <% if post.is_external_content? %>
+    <%= link_to post.title, post.url %>
+  <% else %>
+    <%= link_to post.title, post_path(post) %>
+  <% end %>
+  </li>
+<% end %>
+</ul>

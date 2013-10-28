@@ -1,0 +1,28 @@
+<h2>MAKE A NEW POST</h2>
+
+<%= form_for @post do |f|%>
+<% if @post.errors.any? %>
+<div id="errorExplanation">
+<h2><%= pluralize(@post.errors.count, "error")%> prevented your username from being created.</h2>
+<ul>
+  <% @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</div>
+<% end %>
+<p>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+</p>
+<p>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</p>
+<p>
+  <%= f.submit "Sign up!" %>
+</p>
+<% end %>
