@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :post
 
-  has_many :commentvotes
+  has_many :commentvotes, dependent: :destroy
 
   validates_presence_of :content
 end
