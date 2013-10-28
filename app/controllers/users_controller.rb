@@ -20,7 +20,12 @@ class UsersController < ApplicationController
   end
 
   def login
-
+    if @user = User.find_by_username(params[:username]).try(:authenticate, params[:password])
+      session[:user_id] = @user.id
+      redirect_to posts_path
+    else
+      render "posts/index"
+    end
   end
 
 end
