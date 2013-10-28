@@ -1,0 +1,21 @@
+<h1>Chicago Coyote Chronicle</h1>
+
+<% if current_user %>
+  <h1>Welcome, <%= current_user.username %></h1>
+  <%= link_to 'Log Out', '/logout' %>
+<% else %>
+  <%= form_tag (login_path)  do %>
+    <p>
+      <%= label_tag(:user) %>
+      <%= text_field_tag(:username, params[:username]) %>
+    </p>
+    <p>
+      <%= label_tag(:password) %>
+      <%= password_field_tag(:password) %>
+    </p>
+    <p>
+      <%= submit_tag("Login") %>
+    </p>
+    <% end %>
+  <%= link_to "Sign Up", new_user_path %>
+<% end %>
