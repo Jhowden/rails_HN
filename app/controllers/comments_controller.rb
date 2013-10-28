@@ -1,9 +1,15 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
 
-  def new
-  end
 
   def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(params[:comment])
+    if @comment.save
+      current_user.comments << @comment
+      redirect_to post_path(@post)
+    else
+      render "/posts/#{@post.id}"
+    end
   end
 
   def edit
