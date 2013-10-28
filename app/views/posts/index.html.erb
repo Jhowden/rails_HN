@@ -29,6 +29,8 @@
   <% else %>
     <%= link_to post.title, post_path(post) %>
   <% end %>
+  <h6>Author:<%= post.user.username %></h6>
+  <h6><%= link_to "Comments", post_path(post) %></h6>
   </li>
 <% end %>
 </ul>
