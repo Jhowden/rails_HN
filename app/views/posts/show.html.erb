@@ -1,0 +1,13 @@
+<h1>
+  <% if @post.is_external_content? %>
+    <%= link_to @post.title, @post.url %>
+  <%else%>
+    <%= @post.title %>
+  <%end%>
+</h1>
+
+<div class="content">
+<h3><%= @post.content %></h3>
+</div>
+
+<%= link_to "Back", posts_path %>
